@@ -1,22 +1,38 @@
-const randoNumber = Math.round(Math.random() * 10)
+const screen1 = document.querySelector('.screen1')
+const screen2 = document.querySelector('.screen2')
+let randoNumber = Math.round(Math.random() * 10)
 let Attempts = 1
 console.log(randoNumber)
-function handleClick(event) {
-    event.preventDefault()
 
-    let inputNumber = document.querySelector("#inputNumber")
-    // let result = inputNumber.value == randoNumber
 
+function handleTryClick(event) {
     
-
+    event.preventDefault() // não realizar o padrão do evento
+    
+    const inputNumber = document.querySelector("#inputNumber")
+    // let result = inputNumber.value == randoNumber
+    
     if(inputNumber.value == randoNumber){
-        document.querySelector('.screen1').classList.add('hide')
-        document.querySelector('.screen2').classList.remove('hide')
-
+        screen1.classList.add('hide')
+        screen2.classList.remove('hide')
+        
         document
         .querySelector('.screen2 h2')
         .innerText = `Você acertou em ${Attempts}`
     }
+    inputNumber.value = ''
     Attempts++
-    console.log(Attempts)
 }
+
+
+//Eventos
+
+const btnReset= document.querySelector('#btnReset')
+const btnTry = document.querySelector('#btnTry')
+
+btnTry.addEventListener('click', handleTryClick)
+btnReset.addEventListener('click', function(){
+    screen1.classList.remove('hide')
+    screen2.classList.add('hide')
+    Attempts = 1
+})
