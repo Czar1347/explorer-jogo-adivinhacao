@@ -9,16 +9,21 @@ function handleTryClick(event) {
     
     event.preventDefault() // não realizar o padrão do evento
     
+
     const inputNumber = document.querySelector("#inputNumber")
-    // let result = inputNumber.value == randoNumber
     
     if(inputNumber.value == randoNumber){
-        screen1.classList.add('hide')
-        screen2.classList.remove('hide')
+        screen1
+        .classList
+        .add('hide');
+
+        screen2
+        .classList
+        .remove('hide');
         
-        document
-        .querySelector('.screen2 h2')
-        .innerText = `Você acertou em ${Attempts}`
+        screen2
+        .querySelector('h2')
+        .innerText = `Você acertou em ${Attempts}`;
     }
     inputNumber.value = ''
     Attempts++
@@ -35,4 +40,6 @@ btnReset.addEventListener('click', function(){
     screen1.classList.remove('hide')
     screen2.classList.add('hide')
     Attempts = 1
+    randoNumber = Math.round(Math.random() * 10)
+    console.log(randoNumber)
 })
